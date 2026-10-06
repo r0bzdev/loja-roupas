@@ -1,5 +1,5 @@
 # Lista dos Tamanhos das vestimentas
-Tamanhos = ["PP", "P", "M", "G", "GG", "XXL"]
+TAMANHOS = ["PP", "P", "M", "G", "GG", "XXL"]
 
 # Lista de dicionário: um por produto
 
