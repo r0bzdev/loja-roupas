@@ -1,6 +1,7 @@
 from .calculos import frete, total_carrinho
+
 from .produto import Produto
-from .promocao import SemPromocao
+from .promocao import Promocao, SemPromocao
 
 
 class CarrinhoFinalizadoError(Exception):
@@ -11,7 +12,13 @@ class Carrinho:
     def __init__(self, promocao=None):
         self._itens = []   # pares (produto, quantidade)
         self._finalizado = False
-        self.promocao = promocao or SemPromocao()
+        if promocao is None:
+            promocao = SemPromocao()
+
+        if not isinstance(promocao, Promocao):
+            raise TypeError("promoção deve ser uma instância de Promocao")
+
+        self.promocao = promocao
 
     def adicionar(self, produto, quantidade=1):
         if self._finalizado:
